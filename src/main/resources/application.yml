@@ -1,0 +1,9 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
+  thymeleaf:
+    cache: false
+
+tax: '0.12'
+discount: '0.2'

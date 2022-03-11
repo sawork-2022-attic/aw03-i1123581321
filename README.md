@@ -1,21 +1,15 @@
-# WebPOS
+# WebPos
 
-The demo shows a simple POS system in MVC architecture, which replaces the shell interface in aw02 with a pos web ui (https://github.com/bshbsh404/simple-pos-ui
-).
+在 poshell 的基础上升级为使用 MVC 架构的 web 服务，实现了包括商品的添加，购物车的编辑，价格（含税与折扣等）的计算，税率与折扣等定义在 application.yml 中，避免在代码中硬编码
 
-![](screenshot.png)
+## 视图层
 
-To run
+view 使用 thymeleaf 的模板实现，controller 会将数据填充到模板，然后交由模板引擎渲染为静态页面
 
-```shell
-mvn clean spring-boot:run
-```
+## 控制层
 
-Currently, it just lists the products for sale with a cart with one item (just for demonstration). 
+控制层定义 controller 类，用于将路径映射到特定的处理方法，除此之外也实现了 service 层作为控制层的一部分，目的是将业务逻辑和路由相关的逻辑解耦，避免 controller 代码规模过大
 
-Please read the tutorial at  https://www.baeldung.com/spring-boot-crud-thymeleaf and make the POS system robust and fully functional. You can also refer to other articles, for instance https://www.baeldung.com/tag/thymeleaf/ .
+## 模型层
 
-
-
-And please elaborate your understanding in MVC architecture via this homework in your README.md.
-
+模型层沿用 poshell 的代码，使用 h2 database 结合 spring data jpa 访问数据，service 层控制数据的访问，controller 调用 service 的方法进行业务逻辑的控制
